@@ -10,12 +10,14 @@ namespace Restaurant.DataAccess.Data.Repository
         private ApplicationDbContext _db;
         public ICategoryRepository Category { get; set; }
         public IFoodTypeRepository FoodType { get; set; }
+        public IMenuItemRepository MenuItem { get; set; }
 
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
             Category = new CategoryRepository(_db);
             FoodType = new FoodTypeRepository(_db);
+            MenuItem = new MenuItemRepository(_db);
         }
 
         public void Save()
