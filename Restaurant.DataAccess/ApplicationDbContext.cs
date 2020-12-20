@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Restaurant.Models;
 
 namespace Restaurant.DataAccess
 {
@@ -12,5 +13,7 @@ namespace Restaurant.DataAccess
             : base(options)
         {
         }
+
+        public DbSet<Category> Category { get; set; }
     }
 }
