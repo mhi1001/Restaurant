@@ -24,6 +24,21 @@ namespace Restaurant.Controllers
         {
             return Json(new {data = _unitOfWork.Category.GetAll()});
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            //retrieve object from database
+            var objectFromDb = _unitOfWork.Category.GetFirstOrDefault(u => u.Id == id);
+            if (objectFromDb == null) //if the object is null, say there is a error in deletion
+            {
+                return Json((new {success = false, message = "Error while deleting"}));
+
+            }
+            _unitOfWork.Category.Remove(objectFromDb); //remove it from Db
+            _unitOfWork.Save(); //save the changes on the DB
+            return Json(new {success = true, message = "Delete Successful"}); //ANd then a simple message alerting the deletion was successful
+        }
         
     }
 }
