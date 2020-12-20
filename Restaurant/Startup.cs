@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Restaurant.DataAccess;
+using Restaurant.DataAccess.Data.Repository;
+using Restaurant.DataAccess.Data.Repository.IRepository;
 
 namespace Restaurant
 {
@@ -32,6 +34,9 @@ namespace Restaurant
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            //Dependency Injection
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             services.AddMvc(options => options.EnableEndpointRouting = false)
                 .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
