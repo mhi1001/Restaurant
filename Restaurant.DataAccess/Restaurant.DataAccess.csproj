@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -9,6 +9,18 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
     <PackageReference Include="Stripe.net" Version="39.31.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Repository\IRepository\" />
+    <Folder Include="Repository\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="Initializer\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Restaurant.Models\Restaurant.Models.csproj" />
+    <ProjectReference Include="..\Restaurant.Utility\Restaurant.Utility.csproj" />
   </ItemGroup>
 
 </Project>

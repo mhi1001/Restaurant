@@ -16,4 +16,9 @@
     <PackageReference Include="Stripe.net" Version="39.31.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Restaurant.DataAccess\Restaurant.DataAccess.csproj" />
+    <ProjectReference Include="..\Restaurant.Models\Restaurant.Models.csproj" />
+  </ItemGroup>
+
 </Project>
