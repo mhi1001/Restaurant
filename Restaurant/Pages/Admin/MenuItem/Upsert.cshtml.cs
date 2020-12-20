@@ -30,7 +30,8 @@ namespace Restaurant.Pages.Admin.MenuItem
             MenuItemObj = new MenuItemVM//Populate the viewmodel with the several existing properties
             {
                 CategoryList = _unitOfWork.Category.GetCategoryListForDropdown(),
-                FoodTypeList = _unitOfWork.FoodType.GetFoodTypeListForDropdown()
+                FoodTypeList = _unitOfWork.FoodType.GetFoodTypeListForDropdown(),
+                MenuItem = new Models.MenuItem() //initialize to prevent null
             };
             if (id != null)//gets the respective object from the database via ID
             {
@@ -64,7 +65,7 @@ namespace Restaurant.Pages.Admin.MenuItem
                     files[0].CopyTo(fileStream);
                 }
 
-                MenuItemObj.MenuItem.Image = @"\image\menuItems\" + fileName + extension;
+                MenuItemObj.MenuItem.Image = @"\images\menuItems\" + fileName + extension;
                 _unitOfWork.MenuItem.Add(MenuItemObj.MenuItem);
             }
             else
@@ -93,8 +94,8 @@ namespace Restaurant.Pages.Admin.MenuItem
                         files[0].CopyTo(fileStream);
                     }
 
-                    MenuItemObj.MenuItem.Image = @"\image\menuItems\" + fileName + extension;
-                    _unitOfWork.MenuItem.Add(MenuItemObj.MenuItem);
+                    MenuItemObj.MenuItem.Image = @"\images\menuItems\" + fileName + extension;
+                    
 
                 }
                 else//In case the picture wasnt changed
